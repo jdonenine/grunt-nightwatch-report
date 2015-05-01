@@ -1,0 +1,41 @@
+{
+  "name": "grunt-nightwatch-report",
+  "description": "Aggregate and process Nightwatch.js test suite reports to create easy to digest HTML reports.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jdonenine/grunt-nightwatch-report",
+  "author": {
+    "name": "Jeffry DiNoto",
+    "email": "jeff.dinoto@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdonenine/grunt-nightwatch-report.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jdonenine/grunt-nightwatch-report/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jdonenine/grunt-nightwatch-report/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
