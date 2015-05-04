@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="01GoogleSearchTest"
+    errors="0" failures="0" hostname="" id="" package="01GoogleSearchTest" skipped="0"
+    tests="2" time="14.78" timestamp="Fri, 01 May 2015 10:28:16 GMT">
+  
+    <testcase name="&#39;nightwatch&#39; Google Search Test" time="8.075" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="&#39;Riverbed Technology&#39; Google Search Test" time="6.704" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>

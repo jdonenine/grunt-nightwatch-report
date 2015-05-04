@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="2">
+
+  <testsuite name="02GoogleSearchTestFail"
+    errors="0" failures="1" hostname="" id="" package="02GoogleSearchTestFail" skipped="1"
+    tests="2" time="7.267" timestamp="Fri, 01 May 2015 10:28:31 GMT">
+  
+    <testcase name="Bad &#39;nightwatch&#39; Google Search Test" time="7.267" assertions="3">
+
+    
+
+      <failure message="Testing if element &lt;#main&gt; contains text: &quot;This Should Fail&quot;.">Testing if element &lt;#main&gt; contains text: &quot;This Should Fail&quot;.: Expected &quot;This Should Fail&quot; but got: &quot;WebVideosImagesBooksShoppingMore
+Search tools
+About 6,770,000 results (0.37 seconds) 
+
+
+Nightwatch - Episodes, Video &amp; Schedule - A&amp;E
+www.aetv.com/nightwatch
+A&amp;E
+Everything you need to know about Nightwatch,with episodes, videos, and TV schedules, on A&amp;E.
+Season 1 - Retaliation - Cast - Video
+Night Watch - IMDb
+www.imdb.com/title/tt0403358/
+Internet Movie Database
+Rating: 6.5/10 - 44,926 votes
+A man who serves in the war between the forces of Light and Dark comes into possession of a device that can restore life to Moscow, which was nearly ...
+Nightwatch (1997) - IMDb
+www.imdb.com/title/tt0119791/
+Internet Movie Database
+Rating: 6.2/10 - 14,976 votes
+Ewan McGregor plays a law student who takes a job as a night watchman at a morgue. He begins to discover clues that implicate him as the suspect of a serial ...
+Night Watch (2004 film) - Wikipedia, the free encyclopedia
+en.wikipedia.org/wiki/Night_Watch_(2004_film)
+Wikipedia
+Night Watch (Russian: Ночной дозор, Nochnoy dozor) is a 2004 Russian urban fantasy supernatural thriller film directed by Timur Bekmambetov. It is loosely ...
+Night Watch (Lukyanenko novel) - Wikipedia, the free ...
+en.wikipedia.org/wiki/Night_Watch_(Lukyanenko_novel)
+Wikipedia
+Night Watch (Russian: Ночной дозор, Nochnoy Dozor) is a fantasy novel by Russian writer Sergei Lukyanenko published in 1998 (1st ed ISBN 5-237-01511-5).
+Images for nightwatch
+Report images
+More images for nightwatch
+A&amp;E sets premiere for Dick Wolf series &#39;Nightwatch&#39; | EW.com
+www.ew.com/.../nightwatch-ae-dick-wolf-premier...
+Entertainment Weekly
+Jan 17, 2015 - Dick Wolf&#39;s television shows will basically come alive on his new reality series Nightwatch, which follows emergency responders who work the ...
+Night Watch (2006) - Rotten Tomatoes
+www.rottentomatoes.com/m/night_watch_2006/
+Rotten Tomatoes
+Rating: 58% - 127 votes
+Critics Consensus: This Russian horror/fantasy film pits darkness and light against each other using snazzy CGI visuals to create an extraordinary atmosphere of ...
+NightWatch Archives - KGS
+www.kforcegov.com/services/is/nightwatch.aspx
+NightWatch is an internationally acclaimed nightly newsletter that tracks and assesses threats to US national security. It has an edgy, executive style unlike any ...
+Night Watch: Sergei Lukyanenko, Andrew Bromfield ...
+www.amazon.com/Night-Watch-Sergei.../140135979...
+Amazon.com, Inc.
+The Night Watch series has caused a sensation never before seen in Russia -- its popularity is frenzied and unprecedented, and driven by a truly great, epic ...
+Searches related to nightwatch
+nightwatch 1997
+nightwatch book
+nightwatch net
+nightwatch tv show
+nightwatch a&amp;e
+night watch tv series
+nightwatch js
+nightwatch zine
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Next
+See results about
+Night Watch (2004 film)
+Release date: February 17, 2006 (USA)
+Director: Timur Bekmambetov
+Nightwatch (1997 film)
+Initial release: 1997
+Director: Ole Bornedal
+The Night Watch (Novel by S. V. Lukianenko and Sergei Lukyanenko)
+Published: 1998
+Author: Sergei Lukyanenko
+Feedback
+Cary, NC - From your Internet address - Use precise location - Learn more   
+Help Send feedback Privacy Terms&quot;
+    at Object.&lt;anonymous&gt; (d:\git\jdinoto\netcs\webapp-vnes-autotest\src\main\nightwatch\node_modules\nightwatch\lib\core\assertion.js:105:19)
+    at Object.&lt;anonymous&gt; (d:\git\jdinoto\netcs\webapp-vnes-autotest\src\main\nightwatch\node_modules\nightwatch\lib\api\element-commands.js:351:24)
+    at HttpRequest.&lt;anonymous&gt; (d:\git\jdinoto\netcs\webapp-vnes-autotest\src\main\nightwatch\node_modules\nightwatch\lib\index.js:299:20)
+    at HttpRequest.emit (events.js:110:17)
+    at HttpRequest.&lt;anonymous&gt; (d:\git\jdinoto\netcs\webapp-vnes-autotest\src\main\nightwatch\node_modules\nightwatch\lib\index.js:322:15)
+    at HttpRequest.emit (events.js:118:17)
+    at IncomingMessage.&lt;anonymous&gt; (d:\git\jdinoto\netcs\webapp-vnes-autotest\src\main\nightwatch\node_modules\nightwatch\lib\http\request.js:148:16)
+    at IncomingMessage.emit (events.js:129:20)
+    at _stream_readable.js:908:16
+    at process._tickCallback (node.js:355:11)</failure>
+
+    
+    </testcase>
+  
+  
+    
+    <testcase
+      name="Bad &#39;Riverbed Technology&#39; Google Search Test">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

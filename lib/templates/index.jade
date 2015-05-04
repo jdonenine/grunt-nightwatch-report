@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Nighwatch Test Report Summary
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+
+  body
+    div.jumbotron
+      div.container
+        h1 Nightwatch.js Testing Summary
+        p 
+            span This report summarizes a series of automated Nightwatch.js test suites.  This report was generated at 
+            span= summaryReportGenDateTime
+            span .
+
+    div.container
+      div.row
+        div.col-md-4
+          h2 Tests
+          p 
+            span A total of 
+            span= numTests
+            span  tests were executed.
+        div.col-md-4
+          h2 Failures
+          p
+            span= numFailures
+            span  of those tests failed.
+        div.col-md-4
+          h2 Errors
+          p
+            span= numErrors
+            span  of those tests had errors.
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
