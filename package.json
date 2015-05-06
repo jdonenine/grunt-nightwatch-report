@@ -1,7 +1,7 @@
 {
   "name": "grunt-nightwatch-report",
   "description": "Aggregate and process Nightwatch.js test suite reports to create easy to digest HTML reports.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/jdonenine/grunt-nightwatch-report",
   "author": {
     "name": "Jeff DiNoto",

@@ -29,9 +29,8 @@ var jadeTemplateIndexHtml = "doctype html\n" +
 "      function drawSummaryChart() {\n" +
 "        var data = google.visualization.arrayToDataTable([\n" +
 "          ['Result', 'Number of Tests'],\n" +
-"          ['Success', #{numTests - numFailures - numErrors}],\n" +
+"          ['Success', #{numSuccess}],\n" +
 "          ['Failure', #{numFailures}],\n" +
-"          ['Error',  #{numErrors}]\n" +
 "        ]);\n" +
 "        var options = {\n" +
 "          'chartArea': {'width': '90%', 'height': '90%'},\n" +
@@ -64,15 +63,15 @@ var jadeTemplateIndexHtml = "doctype html\n" +
 "            span= numTests\n" +
 "            |  test suites were executed.\n" +
 "        div.col-md-4\n" +
+"          h2 Success\n" +
+"          p\n" +
+"            span= numSuccess\n" +
+"            |  of those test suites were successful. \n" +
+"        div.col-md-4\n" +
 "          h2 Failures\n" +
 "          p\n" +
 "            span= numFailures\n" +
 "            |  of those test suites failed.\n" +
-"        div.col-md-4\n" +
-"          h2 Errors\n" +
-"          p\n" +
-"            span= numErrors\n" +
-"            |  of those test suites had errors. \n" +
 "\n" +
 "    div.container(style='margin-top: 20px;')\n" +
 "        div.page-header\n" +
@@ -201,7 +200,7 @@ module.exports = function(grunt) {
         var summary = {
             numTests: 0,
             numFailures: 0,
-            numErrors: 0,
+			numSuccess: 0,
             summaryReportGenDateTime: now.toLocaleString(),
             suites: []
         };
@@ -222,9 +221,11 @@ module.exports = function(grunt) {
                 
                 var testsuites = json.testsuites;
                 var suiteSummary = testsuites.$;
-                summary.numTests = Number(suiteSummary.tests);
-                summary.numFailures = Number(suiteSummary.failures);
-                summary.numErrors = Number(suiteSummary.errors);
+                summary.numTests++;
+				if ((suiteSummary.failures && Number(suiteSummary.failures)) > 0 || (suiteSummary.errors && Number(suiteSummary.errors)))
+					summary.numFailures++;
+				else
+					summary.numSuccess++;
                 
                 var testsuiteArray = testsuites.testsuite;
                 for (var i = 0; i < testsuiteArray.length; i++) {
