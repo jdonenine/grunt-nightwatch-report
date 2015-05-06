@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "homepage": "https://github.com/jdonenine/grunt-nightwatch-report",
   "author": {
-    "name": "Jeffry DiNoto",
+    "name": "Jeff DiNoto",
     "email": "jeff.dinoto@gmail.com"
   },
   "repository": {
@@ -43,6 +43,10 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "nightwatch",
+    "nightwatchjs",
+    "grunt",
+    "selenium"
   ]
 }
