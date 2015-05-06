@@ -13,7 +13,134 @@ var xml2js = require('xml2js');
 var S = require('string');
 var mkdirp = require('mkdirp');
 var jade = require('jade');
-var path = require('path');
+
+var jadeTemplateIndexHtml = "doctype html\n" +
+"html(lang='en')\n" +
+"  head\n" +
+"    meta(charset='utf-8')\n" +
+"    meta(http-equiv='X-UA-Compatible', content='IE=edge')\n" +
+"    meta(name='viewport', content='width=device-width, initial-scale=1')\n" +
+"    title Nighwatch.js Testing Summary\n" +
+"    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')\n" +
+"    script(type='text/javascript', src='https://www.google.com/jsapi')\n" +
+"    script(type='text/javascript').\n" +
+"      google.load('visualization', '1', {packages:['corechart']});\n" +
+"      google.setOnLoadCallback(drawSummaryChart);\n" +
+"      function drawSummaryChart() {\n" +
+"        var data = google.visualization.arrayToDataTable([\n" +
+"          ['Result', 'Number of Tests'],\n" +
+"          ['Success', #{numTests - numFailures - numErrors}],\n" +
+"          ['Failure', #{numFailures}],\n" +
+"          ['Error',  #{numErrors}]\n" +
+"        ]);\n" +
+"        var options = {\n" +
+"          'chartArea': {'width': '90%', 'height': '90%'},\n" +
+"          'legend': 'none',\n" +
+"          colors: ['#d6e9c6', '#ebccd1', '#faebcc']\n" +
+"        };\n" +
+"        var chart = new google.visualization.PieChart(document.getElementById('summaryPieChart'));\n" +
+"        chart.draw(data, options);\n" +
+"      }\n" +
+"\n" +
+"  body\n" +
+"    div.jumbotron\n" +
+"      div.container\n" +
+"        h1 Nightwatch.js Testing Summary\n" +
+"        p \n" +
+"            | This report summarizes a series of automated Nightwatch.js test suites.  This report was generated  \n" +
+"            span= summaryReportGenDateTime\n" +
+"            | .\n" +
+"\n" +
+"    div.container\n" +
+"      div.row(style='text-align: center;')\n" +
+"        div#summaryPieChart(style='width: 250px; height: 250px; display: inline-block; margin-left: auto; margin-right: auto;')\n" +
+"\n" +
+"    div.container\n" +
+"      div.row\n" +
+"        div.col-md-4\n" +
+"          h2 Test Suites\n" +
+"          p \n" +
+"            | A total of \n" +
+"            span= numTests\n" +
+"            |  test suites were executed.\n" +
+"        div.col-md-4\n" +
+"          h2 Failures\n" +
+"          p\n" +
+"            span= numFailures\n" +
+"            |  of those test suites failed.\n" +
+"        div.col-md-4\n" +
+"          h2 Errors\n" +
+"          p\n" +
+"            span= numErrors\n" +
+"            |  of those test suites had errors. \n" +
+"\n" +
+"    div.container(style='margin-top: 20px;')\n" +
+"        div.page-header\n" +
+"            h1 Test Suites\n" +
+"        - each suite in suites\n" +
+"            div(class=(suite.numErrors < 1 && suite.numFailures < 1 && suite.numSkipped < 1) ? 'panel panel-success' : 'panel panel-danger')\n" +
+"                div.panel-heading\n" +
+"                    h3.panel-title= suite.name\n" +
+"                div.panel-body\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Test Suite Report File\n" +
+"                        div.col-md-8= suite.file\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Test Cases\n" +
+"                        div.col-md-8= suite.numTests\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Test Cases with Failures \n" +
+"                        div.col-md-8= suite.numFailures\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Test Cases with Errors \n" +
+"                        div.col-md-8= suite.numErrors\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Test Cases Skipped \n" +
+"                        div.col-md-8= suite.numSkipped\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Run Time\n" +
+"                        div.col-md-8\n" +
+"                            span= suite.executionTime\n" +
+"                            | s\n" +
+"                    div.row\n" +
+"                        div.col-md-4(style='font-weight: bold;') Timestamp\n" +
+"                        div.col-md-8= suite.timestamp\n" +
+"                    h3 Test Cases\n" +
+"                    - each testcase in suite.cases\n" +
+"                        div(class=(testcase.numFailures < 1 && testcase.numSkipped < 1) ? 'panel panel-success' : 'panel panel-danger')\n" +
+"                            div.panel-heading\n" +
+"                                h3.panel-title= testcase.name\n" +
+"                            div.panel-body\n" +
+"                                div.row\n" +
+"                                    div.col-md-4(style='font-weight: bold;') Assertions\n" +
+"                                    div.col-md-8= testcase.numAssertions\n" +
+"                                div.row\n" +
+"                                    div.col-md-4(style='font-weight: bold;') Assertions Failed\n" +
+"                                    div.col-md-8= testcase.numFailures\n" +
+"                                div.row\n" +
+"                                    div.col-md-4(style='font-weight: bold;') Assertions Skipped\n" +
+"                                    div.col-md-8= testcase.numSkipped\n" +
+"                                div.row\n" +
+"                                    div.col-md-4(style='font-weight: bold;') Run Time\n" +
+"                                    div.col-md-8\n" +
+"                                        span= testcase.executionTime\n" +
+"                                        | s\n" +
+"                                - if (testcase.failures.length > 0)\n" +
+"                                    h4 Failed Assertions\n" +
+"                                    - each failure in testcase.failures\n" +
+"                                        div.panel.panel-danger\n" +
+"                                            div.panel-heading\n" +
+"                                                h3.panel-title Failed Assertion\n" +
+"                                            div.panel-body\n" +
+"                                                -if (failure.message && failure.message.message && failure.message.message.length > 0)\n" +
+"                                                    div.well.well-lg= failure.message.message\n" +
+"                                                -else\n" +
+"                                                    div.well.well-lg No failure message was provided.\n" +
+"                                                -if (failure.details && failure.details.length > 0)\n" +
+"                                                    pre.pre-scrollable= failure.details\n" +
+"\n" +
+"    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')\n" +
+"    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')"
 
 function writeSummaryJsonToFile(outputDir, summaryJsonString, grunt) {
     if (!outputDir)
@@ -49,13 +176,11 @@ function writeTemplatedSummaryReports(summary, outputDir, grunt) {
         return;
     if (!grunt)
         return;
-    
+	
     var jadeIndexOptions = {
         "pretty": true
     };
-	var templatePath = path.resolve('./lib/templates/index.jade');
-	console.log(templatePath);
-    var indexFn = jade.compileFile(templatePath, jadeIndexOptions);
+    var indexFn = jade.compile(jadeTemplateIndexHtml, jadeIndexOptions);
     var indexHtml = indexFn(summary);
     var indexHtmlPath = outputDir + "/index.html";
     fs.writeFileSync(indexHtmlPath, indexHtml);
