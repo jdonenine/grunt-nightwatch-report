@@ -13,6 +13,7 @@ var xml2js = require('xml2js');
 var S = require('string');
 var mkdirp = require('mkdirp');
 var jade = require('jade');
+var path = require('path');
 
 function writeSummaryJsonToFile(outputDir, summaryJsonString, grunt) {
     if (!outputDir)
@@ -52,7 +53,9 @@ function writeTemplatedSummaryReports(summary, outputDir, grunt) {
     var jadeIndexOptions = {
         "pretty": true
     };
-    var indexFn = jade.compileFile("./lib/templates/index.jade", jadeIndexOptions);
+	var templatePath = path.resolve('./lib/templates/index.jade');
+	console.log(templatePath);
+    var indexFn = jade.compileFile(templatePath, jadeIndexOptions);
     var indexHtml = indexFn(summary);
     var indexHtmlPath = outputDir + "/index.html";
     fs.writeFileSync(indexHtmlPath, indexHtml);
