@@ -69,10 +69,13 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('nightwatch_report', 'Aggregate and process Nightwatch.js test suite reports to create easy to digest HTML reports.', function() {
         var parser = new xml2js.Parser();
         
+        var now = new time.Date();
+        
         var summary = {
             numTests: 0,
             numFailures: 0,
             numErrors: 0,
+            summaryReportGenDateTime: now.toString(),
             suites: []
         };
         
