@@ -52,7 +52,7 @@ function writeTemplatedSummaryReports(summary, outputDir, grunt) {
     var jadeIndexOptions = {
         "pretty": true
     };
-    var indexFn = jade.compileFile("lib/templates/index.jade", jadeIndexOptions);
+    var indexFn = jade.compileFile("./lib/templates/index.jade", jadeIndexOptions);
     var indexHtml = indexFn(summary);
     var indexHtmlPath = outputDir + "/index.html";
     fs.writeFileSync(indexHtmlPath, indexHtml);
