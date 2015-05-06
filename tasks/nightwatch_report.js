@@ -33,7 +33,7 @@ function writeSummaryJsonToFile(outputDir, summaryJsonString, grunt) {
 
     var summaryDir = outputDir + "summary_";
     var now = new time.Date();
-    //summaryDir += now.getTime();
+    summaryDir += now.getTime();
     grunt.log.writeln("Creating directory for summary reports '" + summaryDir + "'");
     mkdirp.sync(summaryDir);
 
