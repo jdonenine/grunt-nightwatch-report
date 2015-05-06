@@ -10,7 +10,6 @@
 
 var fs = require('fs');
 var xml2js = require('xml2js');
-var time = require('time');
 var S = require('string');
 var mkdirp = require('mkdirp');
 var jade = require('jade');
@@ -32,7 +31,7 @@ function writeSummaryJsonToFile(outputDir, summaryJsonString, grunt) {
     outputDir = outputDirS.s + "/";
 
     var summaryDir = outputDir + "summary_";
-    var now = new time.Date();
+    var now = new Date();
     summaryDir += now.getTime();
     grunt.log.writeln("Creating directory for summary reports '" + summaryDir + "'");
     mkdirp.sync(summaryDir);
@@ -69,13 +68,13 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('nightwatch_report', 'Aggregate and process Nightwatch.js test suite reports to create easy to digest HTML reports.', function() {
         var parser = new xml2js.Parser();
         
-        var now = new time.Date();
+        var now = new Date();
         
         var summary = {
             numTests: 0,
             numFailures: 0,
             numErrors: 0,
-            summaryReportGenDateTime: now.toString(),
+            summaryReportGenDateTime: now.toLocaleString(),
             suites: []
         };
         
